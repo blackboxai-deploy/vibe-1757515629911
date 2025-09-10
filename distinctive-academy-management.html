@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Distinctive Academy - Management Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .dashboard {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .academy-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .welcome-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logout-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .dashboard-card {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.2s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-desc {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .card-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .card-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .credentials {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="container">
+        <div class="login-card">
+            <div class="logo">🎓</div>
+            <h1 class="academy-name">Distinctive Academy</h1>
+            <p class="tagline">Excellence in Education & Innovation</p>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">📧 Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">🔒 Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    🚀 Access Admin Portal
+                </button>
+            </form>
+            
+            <div class="credentials">
+                <strong>🔑 Demo Credentials:</strong><br>
+                Email: admin@distinctiveacademy.com<br>
+                Password: admin123
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="container">
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <div class="welcome-text">🎯 Admin Dashboard</div>
+                <button onclick="handleLogout()" class="logout-btn">
+                    🚪 Logout
+                </button>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-icon">📚</div>
+                    <div class="card-title">Course Management</div>
+                    <div class="card-desc">Create, edit, and manage academy courses and curricula</div>
+                    <button onclick="showCourses()" class="card-btn">Manage Courses</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">Student Enrollment</div>
+                    <div class="card-desc">Enroll new students and manage existing registrations</div>
+                    <button onclick="showEnrollment()" class="card-btn">Manage Students</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">👨‍🏫</div>
+                    <div class="card-title">Faculty Management</div>
+                    <div class="card-desc">Add instructors and manage teaching assignments</div>
+                    <button onclick="showFaculty()" class="card-btn">Manage Faculty</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Performance Analytics</div>
+                    <div class="card-desc">View student progress and academy performance metrics</div>
+                    <button onclick="showAnalytics()" class="card-btn">View Analytics</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Financial Management</div>
+                    <div class="card-desc">Handle tuition payments and financial records</div>
+                    <button onclick="showFinancials()" class="card-btn">Manage Finances</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">System Settings</div>
+                    <div class="card-desc">Configure academy settings and system preferences</div>
+                    <button onclick="showSettings()" class="card-btn">System Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isLoggedIn = false;
+        
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email === 'admin@distinctiveacademy.com' && password === 'admin123') {
+                isLoggedIn = true;
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+            } else {
+                alert('❌ Invalid login. Use: admin@distinctiveacademy.com / admin123');
+            }
+        }
+
+        function handleLogout() {
+            isLoggedIn = false;
+            document.getElementById('loginScreen').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function showEnrollment() {
+            alert('🎓 STUDENT ENROLLMENT\n\nPrograms Available:\n• Computer Science & AI\n• Digital Marketing\n• Web Development\n• Data Analytics\n• Business Management\n\n📋 Features:\n✓ Online Application System\n✓ Document Verification\n✓ Payment Processing\n✓ Class Scheduling\n✓ Student Portal Access');
+        }
+
+        function showCourses() {
+            alert('📚 COURSE MANAGEMENT\n\nActive Courses:\n• Introduction to Programming\n• Advanced Web Development\n• Machine Learning Basics\n• Digital Marketing Strategy\n• Database Management\n\n⚡ Management Tools:\n✓ Curriculum Builder\n✓ Assignment Creation\n✓ Grade Management\n✓ Student Progress Tracking\n✓ Resource Library');
+        }
+
+        function showFaculty() {
+            alert('👨‍🏫 FACULTY MANAGEMENT\n\nCurrent Faculty:\n• Dr. Sarah Johnson - Computer Science\n• Prof. Michael Chen - Data Analytics\n• Ms. Emily Rodriguez - Digital Marketing\n• Dr. James Wilson - Business Studies\n\n🔧 Management Features:\n✓ Faculty Profiles\n✓ Course Assignments\n✓ Performance Reviews\n✓ Schedule Management\n✓ Resource Allocation');
+        }
+
+        function showAnalytics() {
+            alert('📊 PERFORMANCE ANALYTICS\n\nKey Metrics:\n• Student Enrollment: 1,247 active\n• Course Completion Rate: 92%\n• Student Satisfaction: 4.8/5\n• Faculty Rating: 4.9/5\n• Revenue Growth: +23% YoY\n\n📈 Analytics Features:\n✓ Real-time Dashboards\n✓ Progress Reports\n✓ Predictive Analytics\n✓ Custom Reports\n✓ Data Export');
+        }
+
+        function showFinancials() {
+            alert('💰 FINANCIAL MANAGEMENT\n\nFinancial Overview:\n• Monthly Revenue: $125,000\n• Outstanding Payments: $8,500\n• Operational Costs: $95,000\n• Net Profit Margin: 24%\n\n💳 Financial Tools:\n✓ Payment Processing\n✓ Invoice Management\n✓ Expense Tracking\n✓ Financial Reports\n✓ Budget Planning');
+        }
+
+        function showSettings() {
+            alert('⚙️ SYSTEM SETTINGS\n\nConfiguration Options:\n• User Management\n• Security Settings\n• Email Notifications\n• System Backups\n• API Integrations\n\n🔧 System Features:\n✓ Multi-user Access\n✓ Role-based Permissions\n✓ Audit Logs\n✓ Data Security\n✓ System Monitoring');
+        }
+
+        // Auto-focus on email field when page loads
+        window.onload = function() {
+            document.getElementById('email').focus();
+        };
+
+        // Handle Enter key on password field
+        document.getElementById('password').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                handleLogin(event);
+            }
+        });
+    </script>
+</body>
+</html>
